@@ -175,6 +175,13 @@ intentionally fall back to the type's default icon.
 | `model.ins`      | Instruction maker data           |
 | `.info`          | Archive metadata                 |
 
+## Related projects
+
+- [SharpShell](https://github.com/dwmkerr/sharpshell) — reference Shell-extension framework used during development
+- Linux/macOS users: the same idea (read `thumbnail.png` from the io zip) is
+  available as a small script for Gnome/KDE; open an issue if you would like a
+  link added here.
+
 ## License
 
 [MIT](LICENSE).
@@ -183,4 +190,3 @@ intentionally fall back to the type's default icon.
 
 - Microsoft Learn — [IThumbnailProvider](https://learn.microsoft.com/windows/win32/api/thumbcache/nn-thumbcache-ithumbnailprovider)
   and [IInitializeWithStream](https://learn.microsoft.com/windows/win32/api/propsys/nn-propsys-iinitializewithstream)
-- [SharpShell](https://github.com/dwmkerr/sharpshell) — reference Shell-extension framework used during development
