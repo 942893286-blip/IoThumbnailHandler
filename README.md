@@ -59,10 +59,11 @@ the Shell (typically inside `dllhost.exe`).
 
 ```
 IoThumbnailHandler/
-├─ src/IoThumbnailHandler/
-│  ├─ IoThumbnailHandler.csproj
-│  ├─ IoThumbnailProvider.cs   # COM class: extract + render
-│  └─ ShellInterop.cs          # IThumbnailProvider / IInitializeWithStream
+├─ src/
+│  ├─ IoThumbnailHandler/      # COM class library (the handler DLL)
+│  ├─ Installer/               # IoThumbnailHandler_Install.exe
+│  ├─ Uninstaller/             # IoThumbnailHandler_Uninstall.exe
+│  └─ Shared/                  # registration logic shared by the exes
 ├─ scripts/
 │  ├─ Install.ps1
 │  └─ Uninstall.ps1
@@ -83,7 +84,26 @@ on Windows.
 
 ## Install
 
-1. Build the DLL (above).
+### Easy way (prebuilt binaries)
+
+1. Download `IoThumbnailHandler_v1.0_Release.zip` from the
+   [Releases](https://github.com) page and extract it to a **permanent** folder.
+2. Right-click **`IoThumbnailHandler_Install.exe` → Run as administrator**.
+3. Open a folder with `.io` files and switch to Medium/Large icons.
+
+Run **`IoThumbnailHandler_Uninstall.exe`** (as administrator) to remove the
+handler. The binaries themselves are left on disk for you to delete.
+
+### From source (PowerShell)
+
+1. Build everything:
+
+```powershell
+dotnet build -c Release
+```
+
+Handler output: `src\IoThumbnailHandler\bin\Release\net48\IoThumbnailHandler.dll`
+
 2. Open PowerShell **as Administrator**, go to the `scripts` folder and run:
 
 ```powershell
@@ -96,7 +116,9 @@ If the DLL is somewhere else:
 powershell -ExecutionPolicy Bypass -File .\Install.ps1 -DllPath "C:\path\to\IoThumbnailHandler.dll"
 ```
 
-3. Open a folder containing `.io` files and switch to Medium/Large icons.
+The install/uninstall exes (`src\Installer`, `src\Uninstaller`) embed the same
+registration logic and a `requireAdministrator` manifest, so double-clicking
+them is equivalent to running the scripts.
 
 Alternative with RegAsm (dev machines):
 
@@ -110,7 +132,7 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe /codebase IoThumbnail
 powershell -ExecutionPolicy Bypass -File .\Uninstall.ps1
 ```
 
-or
+or run `IoThumbnailHandler_Uninstall.exe`, or
 
 ```powershell
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe /u IoThumbnailHandler.dll
