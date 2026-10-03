@@ -171,7 +171,7 @@ intentionally fall back to the type's default icon.
 | ---------------- | -------------------------------- |
 | `thumbnail.png`  | Rendered preview (used here)     |
 | `model.ldr` / `modelv2.ldr` | LDraw scene           |
-| `model.lxfml`    | Studio model markup              |
+| `model.lxfml`    | LEGO Digital Designer format, used to import in games (or by LEGO)              |
 | `model.ins`      | Instruction maker data           |
 | `.info`          | Archive metadata                 |
 
