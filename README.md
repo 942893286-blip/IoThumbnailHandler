@@ -167,13 +167,14 @@ intentionally fall back to the type's default icon.
 
 `.io` is a ZIP archive typically containing:
 
-| Entry            | Purpose                          |
-| ---------------- | -------------------------------- |
-| `thumbnail.png`  | Rendered preview (used here)     |
-| `model.ldr` / `modelv2.ldr` | LDraw scene           |
+| Entry            | Purpose                                                                         |
+| ---------------- | --------------------------------                                                |
+| `thumbnail.png`  | Rendered preview (used here)                                                    |
+| `model.ldr` / `modelv2.ldr` | LDraw scene                                                          |
+| `model2.ldr`     | self-contained LDraw (definitions for all parts & primitives included)          |
 | `model.lxfml`    | LEGO Digital Designer format, used to import in games (or by LEGO)              |
-| `model.ins`      | Instruction maker data           |
-| `.info`          | Archive metadata                 |
+| `model.ins`      | Instruction maker data                                                          |
+| `.info`          | Archive metadata                                                                |
 
 ## Related projects
 
